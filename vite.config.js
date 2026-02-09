@@ -5,5 +5,5 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   // Il base deve corrispondere esattamente al nome della tua repository su GitHub
-  base: '/react-redux-shopCv/',
+  base: '/react-tanstack-shop/',
 })
