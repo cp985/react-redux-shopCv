@@ -8,7 +8,7 @@ import ErrorPage from "./components/general/ErrorPage";
 import WrapperLayoutMainNav from "./components/general/WrapperLayoutMainNav";
 import MainPageShop from "./pages/MainPageShop";
 
-const router = createBrowserRouter(
+const router = createHashRouter(
   [
     {
       path: "/",
@@ -41,9 +41,10 @@ const router = createBrowserRouter(
       ],
     }
   ],
-  {
-    basename: "/react-tanstack-shop/",
-  }
+  //!usare solo con createBrowserRouter
+  // {
+  //   basename: "/react-tanstack-shop/",
+  // }
 );
 
 function App() {

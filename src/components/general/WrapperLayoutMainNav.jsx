@@ -9,7 +9,6 @@ export default function WrapperLayoutMainNav() {
         <>
             <h1>WrapperLayoutMainNav</h1>
             <MainNav />
-            <MainPageShop/>
             <Outlet />
         </>
     )
