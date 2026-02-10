@@ -111,9 +111,11 @@ export const DUMMY_USERS = [
   {
     email: "admin@admin.it",
     password: "admin",
+    id:'123456789A'
   },
   {
     email: "user@user.it",
     password: "user",
+    id:'987654321B'
   },
 ];

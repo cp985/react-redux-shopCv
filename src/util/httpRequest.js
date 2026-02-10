@@ -9,3 +9,7 @@ console.log('user ', user);
 return foundUser
 }
 
+
+export function getToken(){
+  return localStorage.getItem("token");
+}
