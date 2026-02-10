@@ -1,4 +1,10 @@
-import { createBrowserRouter, RouterProvider, HashRouter, createHashRouter } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  HashRouter,
+  createHashRouter,
+} from "react-router-dom";
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import "./App.css";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
@@ -7,7 +13,6 @@ import AccountUser from "./pages/AccountUser";
 import ErrorPage from "./components/general/ErrorPage";
 import WrapperLayoutMainNav from "./components/general/WrapperLayoutMainNav";
 import MainPageShop from "./pages/MainPageShop";
-
 const router = createHashRouter(
   [
     {
@@ -16,7 +21,6 @@ const router = createHashRouter(
       errorElement: <ErrorPage />,
       children: [
         {
-       
           element: <WrapperLayoutMainNav />,
           children: [
             {
@@ -39,7 +43,7 @@ const router = createHashRouter(
           ],
         },
       ],
-    }
+    },
   ],
   //!usare solo con createBrowserRouter
   // {
@@ -47,8 +51,13 @@ const router = createHashRouter(
   // }
 );
 
+const queryClient = new QueryClient();
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
 }
 
 export default App;

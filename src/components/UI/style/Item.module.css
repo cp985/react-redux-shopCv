@@ -1,0 +1,19 @@
+.item{
+    list-style: none;
+  max-width: 15rem;
+  min-height: 25rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #f2ef20;
+    margin: 1rem;
+}
+
+.h3{
+    text-align: center;
+    padding: 0;
+    margin: 0;
+}
+
+.image{
+    margin: 0.5rem;
+}
