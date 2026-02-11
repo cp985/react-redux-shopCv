@@ -1,22 +1,23 @@
 //! home in cui si ci logga e registra
 import { useState, useEffect } from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useQuery, useMutation } from "@tanstack/react-query";
 import LogInForm from "../components/UI/LogInForm";
-import { logIn, getToken} from "../util/httpRequest";
+import { logIn } from "../util/httpRequest";
 import { DUMMY_USERS } from "../util/dataDummy";
 
+import classHome from "./style/Home.module.css";
 export default function Home() {
   const [isSubscribed, setIsSubscribed] = useState(false);
-
-  const token = getToken();
+  const navigate = useNavigate();
 
   const { mutate, isLoading, isError, error, data } = useMutation({
     mutationFn: ({ DUMMY_USERS, user }) => logIn(DUMMY_USERS, user),
     onSuccess: (response) => {
       console.log("onSuccess data", response);
-    localStorage.setItem("token", response.id);
-    localStorage.setItem("expires", Date.now());
+      localStorage.setItem("token", response.id);
+      localStorage.setItem("expires", Date.now() + 6 * 60 * 1000); //! 6minuti
+      navigate("/app");
     },
   });
 
@@ -29,23 +30,15 @@ export default function Home() {
   }
 
   return (
-    <>
-      <h1>Home token {data && data.password}</h1>
+    <div className={classHome.home}>
+      <h1>Home Login{data && data.password}</h1>
       {isError && <p>{error.message}</p>}
 
-      {!token && (
-        <LogInForm
-          subscribe={isSubscribed}
-          toggleSubscribe={toggleSubscribe}
-          submitHandler={submitHandler}
-        />
-      )}
-      {token  && <Outlet /> }
-    </>
+      <LogInForm
+        subscribe={isSubscribed}
+        toggleSubscribe={toggleSubscribe}
+        submitHandler={submitHandler}
+      />
+    </div>
   );
-}
-
-
-export function loaderToken() {
-  return getToken();
 }

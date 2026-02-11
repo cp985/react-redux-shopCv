@@ -1,10 +1,13 @@
 #root {
 
   max-width: 1380px;
+  width: 100%;
+  
+  min-height: 100vh;
   text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: end;
+
   align-items: center;
   gap: 2rem;
   /* color: #26ff00; */

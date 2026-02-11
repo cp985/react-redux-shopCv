@@ -7,7 +7,7 @@ export default function MainNav() {
       <nav className={classMainNav.nav} >
         <ul className={classMainNav.ul}>
           <li>
-            <Button text={"Home"} isLink={true} path={"/"} />
+            <Button text={"Home"} isLink={true} path={"shop"} />
           </li>
           <li>
             <Button text={"Account"} isLink={true} path={"accountUser"} />

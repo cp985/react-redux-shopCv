@@ -14,37 +14,42 @@ import ErrorPage from "./components/general/ErrorPage";
 import WrapperLayoutMainNav from "./components/general/WrapperLayoutMainNav";
 import MainPageShop from "./pages/MainPageShop";
 
-import {loaderToken} from './pages/Home'
+import { authCheck } from "./util/auth";
+import {loader as loaderItem} from './pages/MainPageShop'
 const router = createHashRouter(
   [
     {
       path: "/",
       element: <Home />,
       errorElement: <ErrorPage />,
-      id: "root",
-      loader:loaderToken,
+     
+    },
+
+    {
+      path: "/app",
+      element: <WrapperLayoutMainNav />,
+      errorElement: <ErrorPage />,
+      loader: () => {
+        return authCheck();
+      },
       children: [
         {
-          element: <WrapperLayoutMainNav />,
-          children: [
-            {
-              index: true,
-              element: <MainPageShop />,
-            },
+         path: "shop",
+         loader: () => {return loaderItem()},
+          element: <MainPageShop />,
+        },
 
-            {
-              path: "cart",
-              element: <Cart />,
-            },
-            {
-              path: "newsLetterContact",
-              element: <NewsLetterContact />,
-            },
-            {
-              path: "accountUser",
-              element: <AccountUser />,
-            },
-          ],
+        {
+          path: "cart",
+          element: <Cart />,
+        },
+        {
+          path: "newsLetterContact",
+          element: <NewsLetterContact />,
+        },
+        {
+          path: "accountUser",
+          element: <AccountUser />,
         },
       ],
     },
