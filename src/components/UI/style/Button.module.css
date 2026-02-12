@@ -8,6 +8,15 @@
     cursor: pointer;
 }
 
+.secondaryButton {
+    padding: 0.5rem;
+    color: var(--text-color);
+    border: none;
+    border-radius: 0.5rem;
+    background-color: transparent;
+    cursor: pointer;
+}
+
 .button:hover {
     background-color: #125b15;
     color: white;

@@ -1,15 +1,53 @@
 #root {
-
   max-width: 1380px;
   width: 100%;
-  
   min-height: 100vh;
   text-align: center;
   display: flex;
   flex-direction: column;
-
   align-items: center;
   gap: 2rem;
-  /* color: #26ff00; */
+  --primary-theme-color: rgba(196, 181, 253, 0.3);
+  --secondary-theme-color: rgba(251, 207, 232, 0.35);
+  --tertiary-theme-color: rgba(191, 219, 254, 0.3);
+  --quaternary-theme-color: rgba(254, 215, 170, 0.3);
+  --quinary-theme-color: rgba(167, 243, 208, 0.2);
+  --text-color: #1a1a2e;
+  --background-base: #faf9f6;
 }
 
+[data-theme='dark'] {
+  --primary-theme-color: rgba(138, 43, 226, 0.4);
+  --secondary-theme-color: rgba(219, 39, 119, 0.35);
+  --tertiary-theme-color: rgba(59, 130, 246, 0.3);
+  --quaternary-theme-color: rgba(245, 158, 11, 0.25);
+  --quinary-theme-color: rgba(16, 185, 129, 0.15);
+  --text-color: white;
+  --background-base: #121238;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text-color);
+  position: relative;
+  background:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E"),
+    radial-gradient(ellipse at 15% 20%, var(--primary-theme-color) 0%, transparent 50%),
+    radial-gradient(ellipse at 85% 15%, var(--secondary-theme-color) 0%, transparent 45%),
+    radial-gradient(ellipse at 10% 85%, var(--tertiary-theme-color) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 80%, var(--quaternary-theme-color) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, var(--quinary-theme-color) 0%, transparent 60%),
+    var(--background-base);
+  background-size: 200px 200px, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+  background-attachment: fixed;
+  animation: magicShift 20s ease-in-out infinite alternate;
+}
+
+@keyframes magicShift {
+  0% {
+    background-position: 0% 0%, 15% 20%, 85% 15%, 10% 85%, 90% 80%, 50% 50%, 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%, 20% 25%, 80% 20%, 15% 80%, 85% 85%, 55% 45%, 0% 0%;
+  }
+}
