@@ -17,14 +17,18 @@ import OrdersHistory from "./pages/OrdersHistory";
 import ProfileUser from "./pages/ProfileUser";
 import FirstPage from "./pages/FirstPage";
 import Sales from "./pages/Sales";
+import Spinner from "./components/UI/Spinner";
 import { authCheck } from "./util/auth";
-import { loader as loaderItem } from "./pages/MainPageShop";
+import { httpLoader } from "./util/httpRequest";
+
+const queryClient = new QueryClient();
 const router = createHashRouter(
   [
     {
       path: "/",
       element: <Home />,
       errorElement: <ErrorPage />,
+      hydrateFallbackElement: <Spinner />,
     },
 
     {
@@ -42,8 +46,9 @@ const router = createHashRouter(
         {
           path: "shop",
           loader: () => {
-            return loaderItem();
+            return httpLoader(queryClient);
           },
+
           element: <MainPageShop />,
         },
         {
@@ -63,7 +68,8 @@ const router = createHashRouter(
           path: "accountUser/:user",
           element: <AccountUser />,
           children: [
-            { index: true, element: <ProfileUser /> },
+            { index: true, 
+            element: <ProfileUser /> },
             {
               path: "profile",
               element: <ProfileUser />,
@@ -83,11 +89,10 @@ const router = createHashRouter(
   // }
 );
 
-const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider  router={router} />
+      <RouterProvider router={router}  />
     </QueryClientProvider>
   );
 }

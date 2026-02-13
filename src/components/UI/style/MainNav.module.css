@@ -4,7 +4,7 @@ nav {
     justify-content: center;
     align-items: center;
     padding: 0.5rem;
-
+    position: relative;
     background-color: #e4e000;
     color: black;
 }
@@ -13,7 +13,7 @@ nav {
     width: 100%;
     list-style: none;
     display: flex;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     gap: 1rem;
 }
@@ -27,7 +27,7 @@ nav {
     border-radius: 0.3rem;
     background-color: #e4e000;
     margin-top: 2rem;
-   
+
     padding-top: 0.5rem;
     top: 0;
     left: 0;
@@ -37,17 +37,44 @@ nav {
     height: 0;
     width: 100%;
     opacity: 0;
+    z-index: -1;
     transition: height 0.1s ease-in-out, opacity 0.2s ease-in-out;
 
 }
 
 .li:hover div {
-  
+    z-index: 2;
     height: 3rem;
     opacity: 1;
 
 }
 
-.li:hover .two-link{
+.li:hover .two-link {
+
     height: 6rem;
+
 }
+
+.filterContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+margin-right: auto;
+    height: 100%;
+}
+
+.filter {
+
+    position: absolute;
+    padding-top: 0.5rem;
+    top: 100%;
+    left: calc(0px - 0.5rem);
+    background-color: #e4e000;
+    height: 0;
+    opacity: 0;
+    transition: height 0.1s ease-in-out, opacity 0.1s ease-in-out;
+    width: 15rem;
+
+}
+

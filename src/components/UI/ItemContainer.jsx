@@ -4,8 +4,8 @@ export default function ItemContainer({ list }) {
   return (
     <div className={classItemContainer.container}>
       <ul className={classItemContainer.ul}>
-        {list.map((item) => (
-          <Item key={item.id} item={item} />
+        {list.products.map((item) => (
+          <Item key={item._id} item={item} />
         ))}
       </ul>
     </div>

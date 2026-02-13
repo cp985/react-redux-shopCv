@@ -1,9 +1,9 @@
+import axios from "axios";
 export function logIn(lista, user) {
   const foundUser = lista.find(
     (element) =>
-      element.email === user.email && element.password === user.password 
+      element.email === user.email && element.password === user.password,
   );
-
 
   if (!foundUser) {
     throw new Error("Credenziali non valide. Riprova.");
@@ -11,5 +11,26 @@ export function logIn(lista, user) {
   return foundUser;
 }
 
+export async function httpLoader(queryClient) {
+  const queryKey = ["products"];
+  try {
+    return await queryClient.ensureQueryData({
+      queryKey,
+      queryFn: async () => {
+        const response = await axios.get(
+          "http://localhost:5000/api/products",
+        );
+        return response.data;
+      },
+    });
+  } catch (e) {
+    const message =
+      e.response?.data?.message ||
+      "Errore del server" ||
+      e.message
+    const error = new Error(message);
+    error.status = e.response?.status || 500;
 
-
+    throw error;
+  }
+}

@@ -1,10 +1,14 @@
 //! pagine home se con token . si vedrà lista oggetti e filtri
 import { useLoaderData, Outlet } from "react-router-dom";
+import {useQuery} from '@tanstack/react-query'
+
 import ItemContainer from "../components/UI/ItemContainer";
+
+
 import { DUMMY_ITEMS } from "../util/dataDummy";
+
 export default function MainPageShop() {
   const items = useLoaderData();
-  console.log("items ", items);
 
   return (
     <>
@@ -17,5 +21,5 @@ export default function MainPageShop() {
 }
 
 export function loader() {
-  return DUMMY_ITEMS;
+ 
 }

@@ -1,0 +1,27 @@
+.input-filter{
+  
+    background-color: red;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem
+}
+
+.input-filter:checked + div{
+height: 50dvh;
+opacity: 1;
+
+}
+
+.input-filter2{
+  
+    background-color: rgb(76, 0, 255);
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem
+}
+
+.input-filter2:checked + div{
+width: 50dvh ;
+opacity: 1;
+
+}
