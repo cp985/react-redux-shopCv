@@ -19,7 +19,7 @@ export async function httpLoader(queryClient) {
       queryKey,
       queryFn: async () => {
         const response = await axios.get(
-         API_URL ,
+         `${API_URL}/products` ,
         );
         return response.data;
       },
