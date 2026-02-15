@@ -7,11 +7,21 @@
     
 }
 
+.form-filter label {
+    background-color: #3081fa;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid #f2ef20;
+}
 
+.form-filter input:checked + label{
+    background-color: rgb(137, 137, 1);
+}
 
 
 .form-filter label:hover {
-    background-color: rgb(137, 137, 1);
+    /* background-color: rgb(137, 137, 1); */
 }
 
 

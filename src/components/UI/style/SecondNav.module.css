@@ -1,0 +1,12 @@
+.secondNav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 30%;
+    height: 50dvh;
+    background-color: #e4e000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}

@@ -35,24 +35,11 @@ export default function MainNav({ setIsFilterOpen, isFilterOpen }) {
         </li>
         <li className={classMainNav.li}>
           <Button text={"Shop"} isLink={true} path={"shop"} />
-          <div>
-            <Button text={"Sales"} isLink={true} path={"sales"} />
-          </div>
+
         </li>
         <li className={`${classMainNav.li} `}>
           <Button text={"Account"} isLink={true} path={"accountUser/:id"} />
-          <div className={classMainNav["two-link"]}>
-            <Button
-              text={"Orders"}
-              isLink={true}
-              path={"accountUser/:id/orders"}
-            />
-            <Button
-              text={"Profile"}
-              isLink={true}
-              path={"accountUser/:id/profile"}
-            />
-          </div>
+
         </li>
 
         <li>
